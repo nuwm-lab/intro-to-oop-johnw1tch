@@ -11,12 +11,12 @@
         _b1 = b1;
         _b0 = b0;
     }
-    public void Setb0(float b) { this._b0 = b; }
-    public void Setb1(float b) { this._b1 = b; }
-    public void Setb2(float b) { this._b2 = b; }
-    public float Getb0() { return _b0; }
-    public float Getb1() { return _b1; }
-    public float Getb2() { return _b2; }
+    public void SetB0(float b) { this._b0 = b; }
+    public void SetB1(float b) { this._b1 = b; }
+    public void SetB2(float b) { this._b2 = b; }
+    public float GetB0() { return _b0; }
+    public float GetB1() { return _b1; }
+    public float GetB2() { return _b2; }
     public virtual string Print()
     {
         return _b2 + "x^2 +" + _b1 + "x +" + _b0;
@@ -26,7 +26,7 @@
         if (_b2 * (x * x) + _b1 * x + _b0 == 0) { return true; }
         else { return false; }
     }
-    public double? GetSolution(int n)
+    public virtual double? GetSolution(int n)
     {
         double D = _b1 * _b1 - 4 * _b2 * _b0;
         if (D < 0) return null;
@@ -48,8 +48,8 @@ class CubicEquation : SquareEquation
         _a0 = a0;
     }
 
-    public float Geta0() { return _a0; }
-    public void Seta0(float a0) { this._a0 = a0; }
+    public float GetA0() { return _a0; }
+    public void SetA0(float a0) { this._a0 = a0; }
 
     public override string Print()
     {
