@@ -7,7 +7,6 @@ class SquareEquation
     protected float _b2;
     protected float _b1;
     protected float _b0;
-
     public SquareEquation() 
     { 
     
@@ -63,7 +62,6 @@ class SquareEquation
 class CubicEquation : SquareEquation
 {
     private float _a0;
-
     public CubicEquation() 
     { 
     
@@ -75,7 +73,6 @@ class CubicEquation : SquareEquation
         _b0 = b0;
         _a0 = a0;
     }
-
     public float GetA0() 
     {
         return _a0; 
@@ -84,7 +81,6 @@ class CubicEquation : SquareEquation
     { 
         _a0 = a0;
     }
-
     public override string Print()
     {   //Друкує вигляд формули 
         return _b2 + "x^3 +" + _b1 + "x^2 +" + _b0 + "x +" + _a0;
@@ -161,6 +157,5 @@ class Program
             Console.Clear();
         }
         while (restart);
-
     }
 }
