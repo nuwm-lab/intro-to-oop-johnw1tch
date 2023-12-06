@@ -18,45 +18,45 @@ class SquareEquation
         _b1 = b1;
         _b0 = b0;
     }
-    public void SetB0(float b) 
+    public void setB0(float b) 
     {
         _b0 = b;
     }
-    public void SetB1(float b) 
+    public void setB1(float b) 
     {
         _b1 = b; 
     }
-    public void SetB2(float b) 
+    public void setB2(float b) 
     {
         _b2 = b;
     }
-    public float GetB0() 
+    public float getB0() 
     {
         return _b0;
     }
-    public float GetB1() 
+    public float getB1() 
     {
         return _b1;
     }
-    public float GetB2() 
+    public float getB2() 
     {
         return _b2;
     }
-    public virtual string Print()
+    public virtual string print()
     {   //Друкує вигляд формули 
         return _b2 + "x^2 +" + _b1 + "x +" + _b0;
     }
-    public virtual bool Xval_Valid(float x)
+    public virtual bool xValue_Valid(float x)
     {   //Перевіряє чи є x коренем рівняння 
         if (_b2 * (x * x) + _b1 * x + _b0 == 0) { return true; }
         else { return false; }
     }
-    public virtual double? GetSolution(int n)
+    public virtual double? getSolution(int n)
     {   //Виводить перший чи другий корінь рівняння 
         double D = _b1 * _b1 - 4 * _b2 * _b0;
         if (D < 0) return null;
-        else if (n == 1) return (-1) * _b1 + Math.Sqrt(D) / 2 * _b2;
-        else if (n == 2 && D != 0) return (-1) * _b1 + (-1) * Math.Sqrt(D) / 2 * _b2;
+        else if (n == 1) return ((-1) * _b1 + Math.Sqrt(D)) / (2 * _b2);
+        else if (n == 2 && D != 0) return ((-1) * _b1 + (-1) * Math.Sqrt(D)) / (2 * _b2);
         else return null;
     }
 }
@@ -76,20 +76,20 @@ class CubicEquation : SquareEquation
         _a0 = a0;
     }
 
-    public float GetA0() 
+    public float getA0() 
     {
         return _a0; 
     }
-    public void SetA0(float a0) 
+    public void setA0(float a0) 
     { 
         _a0 = a0;
     }
 
-    public override string Print()
+    public override string print()
     {   //Друкує вигляд формули 
         return _b2 + "x^3 +" + _b1 + "x^2 +" + _b0 + "x +" + _a0;
     }
-    public override bool Xval_Valid(float x)
+    public override bool xValue_Valid(float x)
     {   //Перевіряє чи є x коренем рівняння 
         if (_b2 * (x * x * x) + _b1 * (x * x) + _b0 * x + _a0 == 0) return true;
         else return false;
@@ -120,9 +120,9 @@ class Program
                     break;
                 }
                 Equation = new CubicEquation(a3, a2, a1, a0);
-                Console.WriteLine("Write x for the equation" + Equation.Print());
+                Console.WriteLine("Write x for the equation" + Equation.print());
                 success= float.TryParse(Console.ReadLine(),out float x);
-                bool correct = Equation.Xval_Valid(x);
+                bool correct = Equation.xValue_Valid(x);
                 if (!success)
                 {
                     Console.WriteLine("Some value is incorrectly formatted. Restarting...");
@@ -143,18 +143,18 @@ class Program
                     break;
                 }
                 Equation = new SquareEquation(b2, b1, b0);
-                Console.WriteLine("Write x for the equation" + Equation.Print());
+                Console.WriteLine("Write x for the equation" + Equation.print());
                 success = float.TryParse(Console.ReadLine(),out float x);
                 if (!success)
                 {
                     Console.WriteLine("Some value is incorrectly formatted. Restarting...");
                     break;
                 }
-                bool correct = Equation.Xval_Valid(x);
+                bool correct = Equation.xValue_Valid(x);
                 if (correct) Console.WriteLine("The x is correct");
                 else Console.WriteLine("The x is incorrect");
 
-                Console.WriteLine("Solutions for a square equation " + Equation.Print() + " are :" + ((Equation.GetSolution(1) == null) ? "null" : Equation.GetSolution(1)) + " and " + ((Equation.GetSolution(2) == null) ? "null" : Equation.GetSolution(2)));
+                Console.WriteLine("Solutions for a square equation " + Equation.print() + " are :" + ((Equation.getSolution(1) == null) ? "null" : Equation.getSolution(1)) + " and " + ((Equation.getSolution(2) == null) ? "null" : Equation.getSolution(2)));
             }
             Console.WriteLine("Restart? (Y/N)?");
             restart = (Console.ReadLine() == "Y");
