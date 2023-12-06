@@ -20,15 +20,15 @@ class SquareEquation
     }
     public void SetB0(float b) 
     {
-        this._b0 = b;
+        _b0 = b;
     }
     public void SetB1(float b) 
     {
-        this._b1 = b; 
+        _b1 = b; 
     }
     public void SetB2(float b) 
     {
-        this._b2 = b;
+        _b2 = b;
     }
     public float GetB0() 
     {
@@ -44,7 +44,11 @@ class SquareEquation
     }
     public virtual string Print()
     {   //Друкує вигляд формули 
-        return _b2 + "x^2 +" + _b1 + "x +" + _b0;
+        return _b2 
+            + "x^2 +" 
+            + _b1 
+            + "x +" 
+            + _b0;
     }
     public virtual bool Xval_Valid(float x)
     {   //Перевіряє чи є x коренем рівняння 
@@ -82,12 +86,18 @@ class CubicEquation : SquareEquation
     }
     public void SetA0(float a0) 
     { 
-        this._a0 = a0;
+        _a0 = a0;
     }
 
     public override string Print()
     {   //Друкує вигляд формули 
-        return _b2 + "x^3 +" + _b1 + "x^2 +" + _b0 + "x +" + _a0;
+        return _b2 
+            + "x^3 +" 
+            + _b1 
+            + "x^2 +" 
+            + _b0 
+            + "x +" 
+            + _a0;
     }
     public override bool Xval_Valid(float x)
     {   //Перевіряє чи є x коренем рівняння 
