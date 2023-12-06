@@ -47,8 +47,8 @@ class SquareEquation
     }
     public virtual bool Xval_Valid(float x)
     {   //Перевіряє чи є x коренем рівняння 
-        if (_b2 * (x * x) + _b1 * x + _b0 == 0) { return true; }
-        else { return false; }
+        if (_b2 * (x * x) + _b1 * x + _b0 == 0)  return true; 
+        else  return false;
     }
     public virtual double? GetSolution(int n)
     {   //Виводить перший чи другий корінь рівняння 
