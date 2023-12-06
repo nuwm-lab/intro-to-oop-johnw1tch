@@ -107,12 +107,27 @@ class Program
             {
                 Console.WriteLine("Enter a3,a2,a1,a0");
                 success = float.TryParse(Console.ReadLine(),out float a3);
+                if (!success)
+                {
+                    Console.WriteLine("value is incorrectly formatted.");
+                    break;
+                }
                 success = float.TryParse(Console.ReadLine(),out float a2);
+                if (!success)
+                {
+                    Console.WriteLine("value is incorrectly formatted.");
+                    break;
+                }
                 success = float.TryParse(Console.ReadLine(),out float a1);
+                if (!success)
+                {
+                    Console.WriteLine("value is incorrectly formatted.");
+                    break;
+                }
                 success = float.TryParse(Console.ReadLine(),out float a0); 
                 if (!success)
                 {
-                    Console.WriteLine("Some value is incorrectly formatted. Restarting...");
+                    Console.WriteLine("value is incorrectly formatted.");
                     break;
                 }
                 Equation = new CubicEquation(a3, a2, a1, a0);
@@ -121,7 +136,7 @@ class Program
                 bool correct = Equation.Xval_Valid(x);
                 if (!success)
                 {
-                    Console.WriteLine("Some value is incorrectly formatted. Restarting...");
+                    Console.WriteLine("value is incorrectly formatted.");
                     break;
                 }
                 if (correct) Console.WriteLine("The x is correct");
@@ -131,11 +146,21 @@ class Program
             {
                 Console.WriteLine("Enter b2,b1,b0");
                 success = float.TryParse(Console.ReadLine(),out float b2);
+                if (!success)
+                {
+                    Console.WriteLine("value is incorrectly formatted.");
+                    break;
+                }
                 success = float.TryParse(Console.ReadLine(),out float b1);
+                if (!success)
+                {
+                    Console.WriteLine("value is incorrectly formatted.");
+                    break;
+                }
                 success = float.TryParse(Console.ReadLine(),out float b0);
                 if(!success)
                 {
-                    Console.WriteLine("Some value is incorrectly formatted. Restarting...");
+                    Console.WriteLine("value is incorrectly formatted.");
                     break;
                 }
                 Equation = new SquareEquation(b2, b1, b0);
@@ -143,7 +168,7 @@ class Program
                 success = float.TryParse(Console.ReadLine(),out float x);
                 if (!success)
                 {
-                    Console.WriteLine("Some value is incorrectly formatted. Restarting...");
+                    Console.WriteLine("value is incorrectly formatted.");
                     break;
                 }
                 bool correct = Equation.Xval_Valid(x);
