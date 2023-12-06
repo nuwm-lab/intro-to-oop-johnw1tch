@@ -1,33 +1,58 @@
-﻿class SquareEquation
+﻿
+using System;
+
+
+class SquareEquation
 {
     protected float _b2;
     protected float _b1;
     protected float _b0;
 
-    public SquareEquation() { }
+    public SquareEquation() 
+    { 
+    
+    }
     public SquareEquation(float b2, float b1, float b0)
     {
         _b2 = b2;
         _b1 = b1;
         _b0 = b0;
     }
-    public void SetB0(float b) { this._b0 = b; }
-    public void SetB1(float b) { this._b1 = b; }
-    public void SetB2(float b) { this._b2 = b; }
-    public float GetB0() { return _b0; }
-    public float GetB1() { return _b1; }
-    public float GetB2() { return _b2; }
-    public virtual string Print()
+    public void SetB0(float b) 
     {
+        this._b0 = b;
+    }
+    public void SetB1(float b) 
+    {
+        this._b1 = b; 
+    }
+    public void SetB2(float b) 
+    {
+        this._b2 = b;
+    }
+    public float GetB0() 
+    {
+        return _b0;
+    }
+    public float GetB1() 
+    {
+        return _b1;
+    }
+    public float GetB2() 
+    {
+        return _b2;
+    }
+    public virtual string Print()
+    {   //Друкує вигляд формули 
         return _b2 + "x^2 +" + _b1 + "x +" + _b0;
     }
     public virtual bool Xval_Valid(float x)
-    {
+    {   //Перевіряє чи є x коренем рівняння 
         if (_b2 * (x * x) + _b1 * x + _b0 == 0) { return true; }
         else { return false; }
     }
     public virtual double? GetSolution(int n)
-    {
+    {   //Виводить перший чи другий корінь рівняння 
         double D = _b1 * _b1 - 4 * _b2 * _b0;
         if (D < 0) return null;
         else if (n == 1) return (-1) * _b1 + Math.Sqrt(D) / 2 * _b2;
@@ -39,7 +64,10 @@ class CubicEquation : SquareEquation
 {
     private float _a0;
 
-    public CubicEquation() { }
+    public CubicEquation() 
+    { 
+    
+    }
     public CubicEquation(float b2, float b1, float b0, float a0)
     {
         _b2 = b2;
@@ -48,15 +76,21 @@ class CubicEquation : SquareEquation
         _a0 = a0;
     }
 
-    public float GetA0() { return _a0; }
-    public void SetA0(float a0) { this._a0 = a0; }
+    public float GetA0() 
+    {
+        return _a0; 
+    }
+    public void SetA0(float a0) 
+    { 
+        this._a0 = a0;
+    }
 
     public override string Print()
-    {
+    {   //Друкує вигляд формули 
         return _b2 + "x^3 +" + _b1 + "x^2 +" + _b0 + "x +" + _a0;
     }
     public override bool Xval_Valid(float x)
-    {
+    {   //Перевіряє чи є x коренем рівняння 
         if (_b2 * (x * x * x) + _b1 * (x * x) + _b0 * x + _a0 == 0) return true;
         else return false;
     }
@@ -64,12 +98,12 @@ class CubicEquation : SquareEquation
 
 class Program
 {
-    public static void Main(string[] args)
+    public static void Main()
     {
         bool restart;
         do
         {
-            SquareEquation Equation = new();
+            SquareEquation Equation ;
             Console.WriteLine("Choose:\n 0 - Square Equation.\n 1 - Cubic Equation");
             int choice = int.Parse(Console.ReadLine());
             if (choice == 1)
