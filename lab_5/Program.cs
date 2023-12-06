@@ -44,11 +44,7 @@ class SquareEquation
     }
     public virtual string Print()
     {   //Друкує вигляд формули 
-        return _b2 
-            + "x^2 +" 
-            + _b1 
-            + "x +" 
-            + _b0;
+        return _b2 + "x^2 +" + _b1 + "x +" + _b0;
     }
     public virtual bool Xval_Valid(float x)
     {   //Перевіряє чи є x коренем рівняння 
@@ -91,13 +87,7 @@ class CubicEquation : SquareEquation
 
     public override string Print()
     {   //Друкує вигляд формули 
-        return _b2 
-            + "x^3 +" 
-            + _b1 
-            + "x^2 +" 
-            + _b0 
-            + "x +" 
-            + _a0;
+        return _b2 + "x^3 +" + _b1 + "x^2 +" + _b0 + "x +" + _a0;
     }
     public override bool Xval_Valid(float x)
     {   //Перевіряє чи є x коренем рівняння 
@@ -113,32 +103,53 @@ class Program
         bool restart;
         do
         {
-            SquareEquation Equation ;
+            SquareEquation Equation;
             Console.WriteLine("Choose:\n 0 - Square Equation.\n 1 - Cubic Equation");
-            int choice = int.Parse(Console.ReadLine());
-            if (choice == 1)
+            string? choice = Console.ReadLine();
+            bool success = true;
+            if (choice == "1")
             {
                 Console.WriteLine("Enter a3,a2,a1,a0");
-                float a3 = float.Parse(Console.ReadLine());
-                float a2 = float.Parse(Console.ReadLine());
-                float a1 = float.Parse(Console.ReadLine());
-                float a0 = float.Parse(Console.ReadLine());
+                success = float.TryParse(Console.ReadLine(),out float a3);
+                success = float.TryParse(Console.ReadLine(),out float a2);
+                success = float.TryParse(Console.ReadLine(),out float a1);
+                success = float.TryParse(Console.ReadLine(),out float a0); 
+                if (!success)
+                {
+                    Console.WriteLine("Some value is incorrectly formatted. Restarting...");
+                    break;
+                }
                 Equation = new CubicEquation(a3, a2, a1, a0);
                 Console.WriteLine("Write x for the equation" + Equation.Print());
-                float x = float.Parse(Console.ReadLine());
+                success= float.TryParse(Console.ReadLine(),out float x);
                 bool correct = Equation.Xval_Valid(x);
+                if (!success)
+                {
+                    Console.WriteLine("Some value is incorrectly formatted. Restarting...");
+                    break;
+                }
                 if (correct) Console.WriteLine("The x is correct");
                 else Console.WriteLine("The x is incorrect");
             }
             else
             {
                 Console.WriteLine("Enter b2,b1,b0");
-                float b2 = float.Parse(Console.ReadLine());
-                float b1 = float.Parse(Console.ReadLine());
-                float b0 = float.Parse(Console.ReadLine());
+                success = float.TryParse(Console.ReadLine(),out float b2);
+                success = float.TryParse(Console.ReadLine(),out float b1);
+                success = float.TryParse(Console.ReadLine(),out float b0);
+                if(!success)
+                {
+                    Console.WriteLine("Some value is incorrectly formatted. Restarting...");
+                    break;
+                }
                 Equation = new SquareEquation(b2, b1, b0);
                 Console.WriteLine("Write x for the equation" + Equation.Print());
-                float x = float.Parse(Console.ReadLine());
+                success = float.TryParse(Console.ReadLine(),out float x);
+                if (!success)
+                {
+                    Console.WriteLine("Some value is incorrectly formatted. Restarting...");
+                    break;
+                }
                 bool correct = Equation.Xval_Valid(x);
                 if (correct) Console.WriteLine("The x is correct");
                 else Console.WriteLine("The x is incorrect");
