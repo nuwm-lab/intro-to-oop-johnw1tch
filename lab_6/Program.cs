@@ -1,6 +1,5 @@
 ﻿using System.Runtime.Intrinsics.X86;
 using System.Xml.Serialization;
-
 //Abstract class
 namespace Abstracts
 {
@@ -20,10 +19,8 @@ namespace Abstracts
 
         public abstract string Print();
     } 
-
     public class Square : Equation
     {
-
         public Square(float b2,float b1, float b0) 
         {
             _b2 = b2;
@@ -38,7 +35,6 @@ namespace Abstracts
             }
             else return false;
         }
-
         public override double? GetSolution(int n)
         {
             double D = Math.Sqrt(_b1*_b1+4*_b1*_b0);
@@ -68,7 +64,6 @@ namespace Abstracts
             _b0 = a1;
             _a0 = a0;
         }
-
         public override bool XValValid(float x)
         {
             if (_b2 * x * x * x + _b1 * x * x + _b0 * x + _a0 == 0)
@@ -77,12 +72,10 @@ namespace Abstracts
             }
             else { return false; }
         }
-
         public override double? GetSolution(int n)
         {
             throw new NotImplementedException();
         }
-
         public override string Print()
         {
             return _b2 + "x^3 " + ((_b1 < 0) ? _b1 : "+" + _b1) 
@@ -90,7 +83,6 @@ namespace Abstracts
                 + ((_a0 < 0) ? _a0 : "+" + _a0);
         }
     }
-
     class Program
     {
         public static void Main()
